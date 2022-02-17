@@ -1,7 +1,5 @@
 import { example } from './data.js';
-// import data from './data/lol/lol.js';
-import data from './data/pokemon/pokemon.js';
-// import data from './data/rickandmorty/rickandmorty.js';
+import data from './data/rickandmorty/rickandmorty.js';
 
 console.log(example, data);
 
@@ -11,7 +9,17 @@ let search = document.querySelector("#search");
 
  function buscar(){
     let name = search.value;
-    console.log(name);
+    //console.log(name);
  }
 
  search.addEventListener("keyup",buscar)
+
+ console.log(data.results)
+
+ function getData(data){
+     for(let i=0;i<=data.length;i++){
+         console.log(data[i])
+     }
+ }
+
+ getData(data.results);
