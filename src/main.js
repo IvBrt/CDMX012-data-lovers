@@ -1,12 +1,10 @@
-import { example } from './data.js';
+import { drawResults } from './data.js';
 import data from './data/rickandmorty/rickandmorty.js';
-
-console.log(example, data);
 
 //Crear evento del boton
 
 let search = document.querySelector("#search");
-
+let all = document.getElementById("all");
  function buscar(){
     let name = search.value;
     //console.log(name);
@@ -18,7 +16,7 @@ let search = document.querySelector("#search");
 
  function getData(data){
      for(let i=0;i<=data.length;i++){
-         console.log(data[i])
+         all.innerHTML += drawResults(data[i])
      }
  }
 
