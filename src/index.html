@@ -4,9 +4,54 @@
     <meta charset="utf-8">
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@100;600&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Rick and Morty</h1>
+    <div class="figureSesos">
+      <img src="sesos.png" alt="" id="sesos">
+    </div>
+    <figure id="space">
+      <img src="space.png" alt="" class="space">
+    </figure>  
+    <nav id="nav">
+      <img src="ship.png" alt="" id="ship">
+      <input type="text" name="" id="search" placeholder="Buscar">
+
+      <div class="dropdown">
+        <button class="dropbtn">Episodios</button>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Especie</button>
+        <div class="dropdown-content">
+          <button class="subcategories">Humano</button>
+          <button class="subcategories">Alien</button>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Género</button>
+        <div class="dropdown-content">
+          <button class="subcategories">Masculino</button>
+          <button class="subcategories">Femenino</button>
+        </div>
+      </div> 
+
+    </nav>
+    <section id="all">
+    
+    </section>
+    <section id="genderSection">
+
+    </section>
+    <!-- <figure id="portals">
+      <img src="portal.png" alt="" id="portal">
+      <img src="portal.png" alt="" id="portal">
+      <img src="portal.png" alt="" id="portal">
+      <img src="portal.png" alt="" id="portal">
+      <img src="portal.png" alt="" id="portal">
+    </figure> -->
+
     <div id="root"></div>
     <script src="main.js" type="module"></script>
   </body>
