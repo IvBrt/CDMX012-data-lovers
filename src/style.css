@@ -57,6 +57,7 @@ nav{
 }
 #portal{
   width: 190px;
+  color: #fff;
 }
 p{
   margin: 10px;
@@ -78,5 +79,13 @@ p{
   align-items: flex-start;
 }
 h3{
+  color: #fff;
+}
+#all{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-between;
+}
+#genderSection{
   color: #fff;
 }
