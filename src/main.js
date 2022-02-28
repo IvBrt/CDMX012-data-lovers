@@ -5,14 +5,20 @@ let search = document.querySelector("#search");
 let drawSearch = document.getElementById("drawSearch");
 
 function searchName() {
-  let type = search.value;
-  console.log(type);
-  const filterForName = data.results.filter(nombre => {
-    if(nombre.name == type){
-      drawSearch.innerHTML += drawResults(nombre)
+  drawSearch.innerHTML = "";
+  const boxValue = search.value.toLowerCase();
+  if(boxValue === ""){
+    drawSearch.innerHTML += `<div class ="nothing"> 
+    ¡Escribe algo por favor!
+    </div>`
+  } else {
+  for(let names of data.results){
+    let drawName = names.name.toLowerCase()
+    if(drawName.indexOf(boxValue) !== -1){
+      drawSearch.innerHTML += drawResults(names);
     }
-  })
-  
+  }
+ }
 }
 
 search.addEventListener("keyup", searchName);
@@ -63,3 +69,56 @@ function btnFemale() {
 
 filterFemale.addEventListener("click", btnFemale);
 
+let filterUnknown = document.getElementById("unknown");
+let genderUnknown = document.getElementById("genderUnknown");
+
+function btnUnknown() {
+  genderFemale.innerHTML = "";
+  genderMale.innerHTML = "";
+  genderUnknown.innerHTML = "";
+  genderGenderless.innerHTML = "";
+
+  data.results.forEach((dataRM) => {
+    if (dataRM.gender == "unknown") {
+      genderUnknown.innerHTML += drawResults(dataRM);
+    }
+  });
+}
+
+filterUnknown.addEventListener("click", btnUnknown);
+
+let filterGenderless = document.getElementById("genderless");
+let genderGenderless = document.getElementById("genderGenderless");
+
+function btnGenderless() {
+  genderFemale.innerHTML = "";
+  genderMale.innerHTML = "";
+  genderUnknown.innerHTML = "";
+  genderGenderless.innerHTML = "";
+
+  data.results.forEach((dataRM) => {
+    if (dataRM.gender == "Genderless") {
+      genderGenderless.innerHTML += drawResults(dataRM);
+    }
+  });
+}
+
+filterGenderless.addEventListener("click", btnGenderless);
+
+
+// funcion por nombre exacto 
+
+// let search = document.querySelector("#search");
+// let drawSearch = document.getElementById("drawSearch");
+
+// function searchName() {
+//   let type = search.value;
+//   console.log(type);
+//   const filterForName = data.results.filter((nombre) => {
+//     if (nombre.name == type) {
+//       drawSearch.innerHTML += drawResults(nombre);
+//     }
+//   });
+// }
+
+// search.addEventListener("keyup", searchName);

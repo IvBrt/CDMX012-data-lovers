@@ -45,11 +45,13 @@ nav{
   box-sizing: border-box;
   border-radius: 20px;
   font-weight: bold;
+  color: white;
 }
 ::placeholder{
   font-size: large;
   text-align: center;
   font-family: 'Tomorrow', sans-serif;
+  color: #000000;
 }
 #portals{
   position: absolute;
@@ -148,4 +150,7 @@ p{
 /*sección buscador*/
 #drawSearch{
  color: #fff;
+}
+.nothing{
+  color: #fff;
 }
