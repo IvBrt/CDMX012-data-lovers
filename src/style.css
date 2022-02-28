@@ -41,7 +41,7 @@ nav{
   height: 30px;
   margin: 8px;
   background: rgba(196, 196, 196, 0.1);
-  border: 2px solid #000000;
+  border: 2px solid rgba(128, 255, 0, 0.678);
   box-sizing: border-box;
   border-radius: 20px;
   font-weight: bold;
@@ -51,7 +51,7 @@ nav{
   font-size: large;
   text-align: center;
   font-family: 'Tomorrow', sans-serif;
-  color: #000000;
+  color: #ffffff;
 }
 #portals{
   position: absolute;
