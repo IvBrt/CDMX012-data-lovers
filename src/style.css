@@ -46,6 +46,7 @@ nav{
   border-radius: 20px;
   font-weight: bold;
   color: white;
+  outline: none;
 }
 ::placeholder{
   font-size: large;

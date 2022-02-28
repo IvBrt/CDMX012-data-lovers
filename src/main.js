@@ -8,9 +8,7 @@ function searchName() {
   drawSearch.innerHTML = "";
   const boxValue = search.value.toLowerCase();
   if(boxValue === ""){
-    drawSearch.innerHTML += `<div class ="nothing"> 
-    ¡Escribe algo por favor!
-    </div>`
+    alert("¡Escribe algo!");
   } else {
   for(let names of data.results){
     let drawName = names.name.toLowerCase()
@@ -122,3 +120,8 @@ filterGenderless.addEventListener("click", btnGenderless);
 // }
 
 // search.addEventListener("keyup", searchName);
+
+// mensaje 
+// `<div class ="nothing"> 
+//     ¡Escribe algo por favor!
+//     </div>`
