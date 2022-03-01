@@ -1,8 +1,20 @@
+
+
 import { drawResults } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
+//Declarar variables globales o constantes globales
+
 let search = document.querySelector("#search");
+
 let drawSearch = document.getElementById("drawSearch");
+const test = document.getElementById("overlay");
+
+let filterGenderless = document.getElementById("genderless");
+let genderGenderless = document.getElementById("genderGenderless");
+
+document.getElementById("sesos").addEventListener("click", Overlay, false);
+
 
 function searchName() {
   drawSearch.innerHTML = "";
@@ -54,15 +66,27 @@ filterMale.addEventListener("click", btnMale);
 let filterFemale = document.getElementById("female");
 let genderFemale = document.getElementById("genderFemale");
 
-function btnFemale() {
+function  btnFemale() {
   genderFemale.innerHTML = "";
   genderMale.innerHTML = "";
 
   data.results.forEach((dataRM) => {
     if (dataRM.gender == "Female") {
       genderFemale.innerHTML += drawResults(dataRM);
+      
     }
+
   });
+  data.results.forEach((dataRM) =>{
+    if(dataRM.gender == "Female"){
+      let prueba = "image"+dataRM.id
+      console.log(prueba);
+      document.getElementById(prueba).addEventListener("click", Overlay, true);
+    }
+  }
+
+  )
+
 }
 
 filterFemale.addEventListener("click", btnFemale);
@@ -79,14 +103,15 @@ function btnUnknown() {
   data.results.forEach((dataRM) => {
     if (dataRM.gender == "unknown") {
       genderUnknown.innerHTML += drawResults(dataRM);
+
     }
   });
 }
 
 filterUnknown.addEventListener("click", btnUnknown);
 
-let filterGenderless = document.getElementById("genderless");
-let genderGenderless = document.getElementById("genderGenderless");
+
+
 
 function btnGenderless() {
   genderFemale.innerHTML = "";
@@ -97,7 +122,7 @@ function btnGenderless() {
   data.results.forEach((dataRM) => {
     if (dataRM.gender == "Genderless") {
       genderGenderless.innerHTML += drawResults(dataRM);
-    }
+      }
   });
 }
 
@@ -125,3 +150,20 @@ filterGenderless.addEventListener("click", btnGenderless);
 // `<div class ="nothing"> 
 //     ¡Escribe algo por favor!
 //     </div>`
+
+
+
+const btneps = document.getElementById("eps");
+
+
+ btneps.addEventListener("click", Overlay);
+ test.addEventListener("click",offOverlay);
+
+ function  Overlay() {
+  alert("sdsds");
+  test.style.display = "block";
+}
+
+function offOverlay() {
+  test.style.display = "none";
+}
