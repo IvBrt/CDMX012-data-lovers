@@ -1,5 +1,7 @@
 body{
-  margin: 0px;
+  margin-top: 0px;
+  margin-left: 80px;
+  margin-right: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -16,7 +18,7 @@ body{
   margin: 0px;
   position: relative;
   width: 1000px;
-  z-index: 10;
+  z-index: 20;
 }
 #space{
   position: absolute;
@@ -24,10 +26,11 @@ body{
   opacity: 50%;
 }
 nav{
-  position: absolute;
+  position: fixed;
+  /* position: absolute; */
   width: 800px;
   height: 45px;
-  top: 240px;
+  top: 25px;
   background: rgba(0, 0, 0, 0.5);
   border: 4px solid rgba(74, 19, 117, 0.6);
   box-sizing: border-box;
@@ -36,6 +39,7 @@ nav{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 30;
 }
 #search{
   height: 30px;
@@ -50,14 +54,6 @@ nav{
   font-size: large;
   text-align: center;
   font-family: 'Tomorrow', sans-serif;
-}
-#portals{
-  position: absolute;
-  top: 55%;
-}
-#portal{
-  width: 190px;
-  color: #fff;
 }
 p{
   margin: 10px;
@@ -137,4 +133,81 @@ p{
   border-radius: 20px; 
   cursor: pointer;
   font-size: large;
+}
+.species{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-family: 'Tomorrow', sans-serif;
+  color: #fff;
+  font-size: smaller;
+}
+.card{
+  font-family: 'Tomorrow', sans-serif;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#imagen{
+  /* background-image: url(portal.png); */
+  /* transform: rotate(3600deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg); 
+  transition: transform 4s;
+  -webkit-transition: -webkit-transform 4s;
+  -moz-transition: -moz-transform 4s;  */
+  width: 150px;
+  margin: 30px;
+  box-shadow: 0px 8px 16px 0px rgba(39, 231, 21, 0.753);
+  border-radius: 70px;
+  z-index: 10;
+  box-shadow: inset 0 0 55px 10 px black;
+  cursor: pointer;
+}
+/* #openPortal{ */
+  /* position: absolute;
+  top: 55%; */
+  /* position: fixed;
+  display: none; */
+  /* width: 100%; */
+  /* height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  /* background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#openPortal:target{
+  display: block; */
+  /* opacity: 50%; */
+/* } */
+#portal{
+  width: 190px;
+  color: #fff;
+}
+#overlay{
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
 }
