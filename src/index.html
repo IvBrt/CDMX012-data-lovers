@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@100;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@100;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="figureSesos">
-      <img src="sesos.png" alt="" id="sesos">
+      <img src="sesos.png" alt="" id="sesos" />
     </div>
     <figure id="space">
-      <img src="space.png" alt="" class="space">
-    </figure>  
+      <img src="space.png" alt="" class="space" />
+    </figure>
     <nav id="nav">
-      <img src="ship.png" alt="" id="ship">
-      <input type="text" name="" id="search" placeholder="Buscar">
+      <!-- <img src="ship.png" alt="" id="ship"> -->
+      <input type="text" name="" id="search" placeholder="Buscar" />
 
       <div class="dropdown">
         <button class="dropbtn">Episodios</button>
@@ -41,16 +44,24 @@
       <div class="dropdown">
         <button class="dropbtn">Género</button>
         <div class="dropdown-content">
-          <button class="">Masculino</button>
-          <button class="">Femenino</button>
+          <button class="subcat" id="male">Masculino</button>
+          <button class="subcat" id="female">Femenino</button>
+          <button class="subcat" id="genderless">Sin género</button>
+          <button class="subcat" id="unknown">Desconocido</button>
         </div>
-      </div> 
-
+      </div>
     </nav>
+
     <section class="species" id="specieSection"></section>
 
-    <!-- <figure id="openPortal" class="species">
-    </figure> -->
+    <section id="drawSearch"></section>
+    <section id="genderSection">
+      <div class="genderSection" id="genderMale"></div>
+      <div class="genderSection" id="genderFemale"></div>
+      <div class="genderSection" id="genderUnknown"></div>
+      <div class="genderSection" id="genderGenderless"></div>
+    </section>
+
     <!-- <section class="info"> -->
       <!-- <img src="portal.png" alt="" id="portal"> -->
     <!-- </section> -->
@@ -60,6 +71,10 @@
     </div>
 
 
+
+    <div id="overlay">
+      <p>Sí funciona</p>
+    </div>
 
     <div id="root"></div>
     <script src="main.js" type="module"></script>
