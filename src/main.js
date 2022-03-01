@@ -1,80 +1,149 @@
 import { drawResults } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
+//Declarar variables globales o constantes globales
 
 let search = document.querySelector("#search");
-//let all = document.getElementById("all");
 
-function buscar() {
-  let name = search.value;
-  console.log(name);
-}
+let drawSearch = document.getElementById("drawSearch");
+const test = document.getElementById("overlay");
 
-search.addEventListener("keyup", buscar);
-
-console.log(data.results);
-
-// function genderMale(data) {
-//   let male = [];
-
-  // for (let i = 0; i < data.length; i++) {
-  //   var currentMale = data[i];
-  //   if (currentMale == male) {
-  //     all.innerHTML += drawResults(male[i]);
-  //   }
-
-    //************************** FUNCION GENE ******************************
-    // function getData(characterArray) {
-    //   for (let i = 0; i <= characterArray.length-1; i++) {
-    //     console.log(i, characterArray[i])
-    //     all.innerHTML += drawResults(characterArray[i]);
-    //   }
-    // }
-
-    // getData(data.results);
-  
-
-   let filterGender = document.getElementById("gender");
-   let genderSct = document.getElementById("genderSection");
-
-   // lo que queriamos hacer:  let dataRM = data.results.gender
-
-   function btnGender(){ 
-   data.results.forEach(dataRM =>{
-    if(dataRM.gender == 'Male'){
-      genderSct.innerHTML += drawResults(dataRM);  
+function searchName() {
+  drawSearch.innerHTML = "";
+  const boxValue = search.value.toLowerCase();
+  if (boxValue === "") {
+    alert("¡Escribe algo!");
+  } else {
+    for (let names of data.results) {
+      let drawName = names.name.toLowerCase();
+      if (drawName.indexOf(boxValue) !== -1) {
+        drawSearch.innerHTML += drawResults(names);
+      }
     }
-  })
+  }
 }
 
-  filterGender.addEventListener("click", btnGender)
+search.addEventListener("keyup", searchName);
 
-  //********** 4 intento***************
-  //function genderFilter (forMale){
-    // for (let i = 0; i <= forMale.length-1; i++){
-    //   // if(forMale[i] == data.results[i])
-    //   // genderSct.innerHTML += drawResults(forMale[i]);
-    // }
-  //}
-  
-  //genderFilter(data.results); 
+//console.log(data.results);
 
-  //********* 3 intento ***************
-  // let hombre = "male";
-  
-  // const resultado = data.filter(genero => genero.data == hombre);
-  // console.log(drawResults);
+//************************** FUNCION GENE ******************************
+// function getData(characterArray) {
+//   for (let i = 0; i <= characterArray.length-1; i++) {
+//     console.log(i, characterArray[i])
+//     all.innerHTML += drawResults(characterArray[i]);
+//   }
+// }
 
-  // filterGender.addEventListener("click", resultado);
+// getData(data.results);
 
-  //********** 2 intento ***************
+let filterMale = document.getElementById("male");
+let genderMale = document.getElementById("genderMale");
 
-  // let male = "male";
-  
-  // function hombre (){
-  //   let filtro = data.filter("male")
-  //   if(filtro == male)
-  //   genderSct.innerHTML = drawResults
-  // }
+function btnMale() {
+  genderFemale.innerHTML = "";
+  genderMale.innerHTML = "";
+  genderUnknown.innerHTML = "";
+  genderGenderless.innerHTML = "";
 
-  // filterGender.addEventListener("click",hombre);
+  data.results.forEach((dataRM) => {
+    if (dataRM.gender == "Male") {
+      genderMale.innerHTML += drawResults(dataRM);
+    }
+  });
+}
+
+filterMale.addEventListener("click", btnMale);
+
+let filterFemale = document.getElementById("female");
+let genderFemale = document.getElementById("genderFemale");
+
+function btnFemale() {
+  genderFemale.innerHTML = "";
+  genderMale.innerHTML = "";
+  genderUnknown.innerHTML = "";
+  genderGenderless.innerHTML = "";
+
+  data.results.forEach((dataRM) => {
+    if (dataRM.gender == "Female") {
+      genderFemale.innerHTML += drawResults(dataRM);
+    }
+  });
+  data.results.forEach((dataRM) => {
+    if (dataRM.gender == "Female") {
+      let prueba = "image" + dataRM.id;
+      console.log(prueba);
+      document.getElementById(prueba).addEventListener("click", Overlay, true);
+    }
+  });
+}
+
+filterFemale.addEventListener("click", btnFemale);
+
+let filterUnknown = document.getElementById("unknown");
+let genderUnknown = document.getElementById("genderUnknown");
+
+function btnUnknown() {
+  genderFemale.innerHTML = "";
+  genderMale.innerHTML = "";
+  genderUnknown.innerHTML = "";
+  genderGenderless.innerHTML = "";
+
+  data.results.forEach((dataRM) => {
+    if (dataRM.gender == "unknown") {
+      genderUnknown.innerHTML += drawResults(dataRM);
+    }
+  });
+}
+
+filterUnknown.addEventListener("click", btnUnknown);
+
+let filterGenderless = document.getElementById("genderless");
+let genderGenderless = document.getElementById("genderGenderless");
+
+function btnGenderless() {
+  genderFemale.innerHTML = "";
+  genderMale.innerHTML = "";
+  genderUnknown.innerHTML = "";
+  genderGenderless.innerHTML = "";
+
+  data.results.forEach((dataRM) => {
+    if (dataRM.gender == "Genderless") {
+      genderGenderless.innerHTML += drawResults(dataRM);
+    }
+  });
+}
+
+filterGenderless.addEventListener("click", btnGenderless);
+
+// funcion por nombre exacto
+
+// let search = document.querySelector("#search");
+// let drawSearch = document.getElementById("drawSearch");
+
+// function searchName() {
+//   let type = search.value;
+//   console.log(type);
+//   const filterForName = data.results.filter((nombre) => {
+//     if (nombre.name == type) {
+//       drawSearch.innerHTML += drawResults(nombre);
+//     }
+//   });
+// }
+
+// search.addEventListener("keyup", searchName);
+
+// mensaje
+// `<div class ="nothing">
+//     ¡Escribe algo por favor!
+//     </div>`
+
+function Overlay() {
+  test.style.display = "block";
+}
+
+function offOverlay() {
+  test.style.display = "none";
+}
+
+test.addEventListener("click", offOverlay);

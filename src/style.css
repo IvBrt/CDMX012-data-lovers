@@ -41,15 +41,18 @@ nav{
   height: 30px;
   margin: 8px;
   background: rgba(196, 196, 196, 0.1);
-  border: 2px solid #000000;
+  border: 2px solid rgba(128, 255, 0, 0.678);
   box-sizing: border-box;
   border-radius: 20px;
   font-weight: bold;
+  color: white;
+  outline: none;
 }
 ::placeholder{
   font-size: large;
   text-align: center;
   font-family: 'Tomorrow', sans-serif;
+  color: #ffffff;
 }
 #portals{
   position: absolute;
@@ -137,4 +140,32 @@ p{
   border-radius: 20px; 
   cursor: pointer;
   font-size: large;
+}
+
+/*sección género*/
+.genderSection{
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+}
+/*sección buscador*/
+#drawSearch{
+ color: #fff;
+}
+.nothing{
+  color: #fff;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
 }
