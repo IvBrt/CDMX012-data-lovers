@@ -1,8 +1,6 @@
 import { drawResults } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
-//Declarar variables globales o constantes globales
-
 let search = document.querySelector("#search");
 
 let drawSearch = document.getElementById("drawSearch");
@@ -24,18 +22,6 @@ function searchName() {
 }
 
 search.addEventListener("keyup", searchName);
-
-//console.log(data.results);
-
-//************************** FUNCION GENE ******************************
-// function getData(characterArray) {
-//   for (let i = 0; i <= characterArray.length-1; i++) {
-//     console.log(i, characterArray[i])
-//     all.innerHTML += drawResults(characterArray[i]);
-//   }
-// }
-
-// getData(data.results);
 
 let filterMale = document.getElementById("male");
 let genderMale = document.getElementById("genderMale");
@@ -116,28 +102,6 @@ function btnGenderless() {
 
 filterGenderless.addEventListener("click", btnGenderless);
 
-// funcion por nombre exacto
-
-// let search = document.querySelector("#search");
-// let drawSearch = document.getElementById("drawSearch");
-
-// function searchName() {
-//   let type = search.value;
-//   console.log(type);
-//   const filterForName = data.results.filter((nombre) => {
-//     if (nombre.name == type) {
-//       drawSearch.innerHTML += drawResults(nombre);
-//     }
-//   });
-// }
-
-// search.addEventListener("keyup", searchName);
-
-// mensaje
-// `<div class ="nothing">
-//     ¡Escribe algo por favor!
-//     </div>`
-
 function Overlay() {
   test.style.display = "block";
 }
@@ -145,5 +109,30 @@ function Overlay() {
 function offOverlay() {
   test.style.display = "none";
 }
-
 test.addEventListener("click", offOverlay);
+
+function onSpecieSelect(event){
+  document.getElementById("specieSection").innerHTML = ""
+  data.results.forEach(dataRM =>{
+    if(dataRM.species == event.target.id){
+      document.getElementById("specieSection").innerHTML += drawResults(dataRM);   
+     }
+  })
+}
+      
+let buttons = document.getElementsByClassName("subcategories");
+Array.from(buttons).forEach(element=>{element.addEventListener("click", onSpecieSelect)});
+
+// window.onload = function bringImg(){
+//   const images = document.getElementsByClassName("image");
+//   for(var i = 0; i < images.length; i++) {
+//     images[i].addEventListener("click", openImage.bind(images[i], i), false);
+//   }
+// }
+
+// function openImage(image) {
+//   console.log(image);
+//   document.getElementById("overlay").style.display = "block";
+// }
+// console.log(images);
+
