@@ -1,10 +1,10 @@
+import { characterInfo } from "./data.js";
 import { drawResults } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
-let search = document.querySelector("#search");
 
-let drawSearch = document.getElementById("drawSearch");
-const test = document.getElementById("overlay");
+let search = document.querySelector(".search");
+let drawSearch = document.getElementsByClassName("drawSearch");
 
 function searchName() {
   drawSearch.innerHTML = "";
@@ -15,6 +15,8 @@ function searchName() {
     for (let names of data.results) {
       let drawName = names.name.toLowerCase();
       if (drawName.indexOf(boxValue) !== -1) {
+        // console.log(drawResults(names));
+
         drawSearch.innerHTML += drawResults(names);
       }
     }
@@ -23,116 +25,41 @@ function searchName() {
 
 search.addEventListener("keyup", searchName);
 
-let filterMale = document.getElementById("male");
-let genderMale = document.getElementById("genderMale");
-
-function btnMale() {
-  genderFemale.innerHTML = "";
-  genderMale.innerHTML = "";
-  genderUnknown.innerHTML = "";
-  genderGenderless.innerHTML = "";
-
-  data.results.forEach((dataRM) => {
-    if (dataRM.gender == "Male") {
-      genderMale.innerHTML += drawResults(dataRM);
-    }
-  });
-}
-
-filterMale.addEventListener("click", btnMale);
-
-let filterFemale = document.getElementById("female");
-let genderFemale = document.getElementById("genderFemale");
-
-function btnFemale() {
-  genderFemale.innerHTML = "";
-  genderMale.innerHTML = "";
-  genderUnknown.innerHTML = "";
-  genderGenderless.innerHTML = "";
-
-  data.results.forEach((dataRM) => {
-    if (dataRM.gender == "Female") {
-      genderFemale.innerHTML += drawResults(dataRM);
-    }
-  });
-  data.results.forEach((dataRM) => {
-    if (dataRM.gender == "Female") {
-      let prueba = "image" + dataRM.id;
-      console.log(prueba);
-      document.getElementById(prueba).addEventListener("click", Overlay, true);
-    }
-  });
-}
-
-filterFemale.addEventListener("click", btnFemale);
-
-let filterUnknown = document.getElementById("unknown");
-let genderUnknown = document.getElementById("genderUnknown");
-
-function btnUnknown() {
-  genderFemale.innerHTML = "";
-  genderMale.innerHTML = "";
-  genderUnknown.innerHTML = "";
-  genderGenderless.innerHTML = "";
-
-  data.results.forEach((dataRM) => {
-    if (dataRM.gender == "unknown") {
-      genderUnknown.innerHTML += drawResults(dataRM);
-    }
-  });
-}
-
-filterUnknown.addEventListener("click", btnUnknown);
-
-let filterGenderless = document.getElementById("genderless");
-let genderGenderless = document.getElementById("genderGenderless");
-
-function btnGenderless() {
-  genderFemale.innerHTML = "";
-  genderMale.innerHTML = "";
-  genderUnknown.innerHTML = "";
-  genderGenderless.innerHTML = "";
-
-  data.results.forEach((dataRM) => {
-    if (dataRM.gender == "Genderless") {
-      genderGenderless.innerHTML += drawResults(dataRM);
-    }
-  });
-}
-
-filterGenderless.addEventListener("click", btnGenderless);
-
-function Overlay() {
-  test.style.display = "block";
-}
-
-function offOverlay() {
-  test.style.display = "none";
-}
-test.addEventListener("click", offOverlay);
-
-function onSpecieSelect(event){
-  document.getElementById("specieSection").innerHTML = ""
+function filterData(event){
+  let result = '';
   data.results.forEach(dataRM =>{
     if(dataRM.species == event.target.id){
-      document.getElementById("specieSection").innerHTML += drawResults(dataRM);   
+      result += drawResults(dataRM);
      }
-  })
+  });
+  return result;
 }
-      
+function onSpecieSelect(event){
+  document.getElementById("specieSection").innerHTML = '';
+  const filter = filterData(event);
+  document.getElementById("specieSection").innerHTML = filter;
+  data.results.forEach(dataRM =>{
+    if(dataRM.species == event.target.id){
+      const idImage = "image" + dataRM.id;
+      const img = document.getElementById(idImage);
+      img.addEventListener("click", onOverlay, true); 
+      img.dataRM = dataRM;
+    }
+  });
+}
 let buttons = document.getElementsByClassName("subcategories");
 Array.from(buttons).forEach(element=>{element.addEventListener("click", onSpecieSelect)});
 
-// window.onload = function bringImg(){
-//   const images = document.getElementsByClassName("image");
-//   for(var i = 0; i < images.length; i++) {
-//     images[i].addEventListener("click", openImage.bind(images[i], i), false);
-//   }
-// }
+const overlay = document.getElementById("overlay");
 
-// function openImage(image) {
-//   console.log(image);
-//   document.getElementById("overlay").style.display = "block";
-// }
-// console.log(images);
-
+function onOverlay(event) {
+  overlay.innerHTML = ""
+  overlay.style.display = "block";
+  const overlayFilter = data.results.filter(dataRM => "image"+dataRM.id === event.target.id )
+  overlay.innerHTML += characterInfo(overlayFilter[0]); 
+    // console.log(event.target.dataRM);
+}
+function offOverlay() {
+  overlay.style.display = "none";
+}
+overlay.addEventListener("click", offOverlay);
