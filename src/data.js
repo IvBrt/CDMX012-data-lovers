@@ -18,6 +18,18 @@ export const characterInfo = (information) => {
   <h2>Episode:</h2> <h3>${information.episode.length}</h3>
   </section>`;
 };
+
+export function filterData(specieId, data){
+  let result = '';
+  data.results.forEach(dataRM =>{
+    if(dataRM.species == specieId){
+      result += drawResults(dataRM);
+     }
+  });
+  console.log(result);
+  return result;
+}
+
 // export const example = (letter) => {
 //   return "a" + letter;
 // };

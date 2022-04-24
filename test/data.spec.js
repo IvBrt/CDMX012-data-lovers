@@ -1,4 +1,6 @@
-import { drawResults, characterInfo } from '../src/data.js';
+import { drawResults, characterInfo, filterData } from '../src/data.js';
+import data from "./data/rickandmorty/rickandmorty.js";
+
 
 describe('drawResults', () => {
   it('is a function', () => {
@@ -82,3 +84,39 @@ describe('characterInfo', () => {
     expect(characterInfo(information)).toBe(info);
  
 });
+
+describe('filterData', () => {
+  it('is a function', () => {
+    expect(typeof filterData).toBe('function');
+  });
+
+  it('Filtrado de datos filterData', () => {
+    const vampResults = `<section class="card">
+    <img src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/66.jpeg" alt="" id="image66" class="imagen">
+    <h3>Coach Feratu (Balik Alistane)</h3>
+   </section><section class="card">
+    <img src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/374.jpeg" alt="" id="image374" class="imagen">
+    <h3>Vampire Master</h3>
+   </section><section class="card">
+    <img src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/453.jpeg" alt="" id="image453" class="imagen">
+    <h3>Vampire Master's Assistant</h3>
+   </section>`
+    expect(filterData(data.results)).toBe(vampResults)
+  })
+});
+
+// const vampire = [{
+//   "id": 66,
+//   "name": "Coach Feratu (Balik Alistane)",
+//   "image": "https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/66.jpeg",
+// },
+// {
+// "id": 453,
+// "name": "Vampire Master's Assistant",
+// "image": "https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/453.jpeg",
+// },
+// {
+// "id": 374,
+// "name": "Vampire Master",
+// "image": "https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/374.jpeg",
+// }]

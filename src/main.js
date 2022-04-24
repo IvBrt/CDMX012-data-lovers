@@ -1,7 +1,5 @@
-import { characterInfo } from "./data.js";
-import { drawResults } from "./data.js";
+import { drawResults, characterInfo, filterData } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
-
 
 let search = document.querySelector(".search");
 let drawSearch = document.getElementsByClassName("drawSearch");
@@ -25,18 +23,9 @@ function searchName() {
 
 search.addEventListener("keyup", searchName);
 
-function filterData(event){
-  let result = '';
-  data.results.forEach(dataRM =>{
-    if(dataRM.species == event.target.id){
-      result += drawResults(dataRM);
-     }
-  });
-  return result;
-}
 function onSpecieSelect(event){
   document.getElementById("specieSection").innerHTML = '';
-  const filter = filterData(event);
+  const filter = filterData(event.target.id, data);
   document.getElementById("specieSection").innerHTML = filter;
   data.results.forEach(dataRM =>{
     if(dataRM.species == event.target.id){
